@@ -1,0 +1,3 @@
+---
+- import_playbook: 01-initial-server-setup.yml
+- import_playbook: 02-updates.yml

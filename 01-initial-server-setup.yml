@@ -8,7 +8,6 @@
 ---
 - hosts: all
   remote_user: root
-  gather_facts: false
   vars:
     create_user: cbarrett
     copy_local_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/cbhostadmin_id_rsa.pub') }}"
@@ -48,9 +47,6 @@
         state: present
         regexp: '^#?PermitRootLogin'
         line: 'PermitRootLogin no'
-
-    - name: Update apt
-      apt: update_cache=yes
 
     - name: UFW - Allow SSH connections
       ufw:
