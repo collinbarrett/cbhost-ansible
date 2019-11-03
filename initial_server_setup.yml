@@ -12,7 +12,6 @@
   vars:
     create_user: cbarrett
     copy_local_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/cbhostadmin_id_rsa.pub') }}"
-    sys_packages: []
 
   tasks:
     - name: Make sure we have a 'wheel' group
@@ -43,18 +42,15 @@
         state: present
         key: "{{ copy_local_key }}"
 
-    - name: Disable password authentication for root
+    - name: Disable root login
       lineinfile:
         path: /etc/ssh/sshd_config
         state: present
         regexp: '^#?PermitRootLogin'
-        line: 'PermitRootLogin prohibit-password'
+        line: 'PermitRootLogin no'
 
     - name: Update apt
       apt: update_cache=yes
-
-    - name: Install required system packages
-      apt: name={{ sys_packages }} state=latest
 
     - name: UFW - Allow SSH connections
       ufw:
