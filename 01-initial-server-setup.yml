@@ -10,7 +10,7 @@
   remote_user: root
   vars:
     create_user: cbarrett
-    copy_local_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/cbhostadmin_id_rsa.pub') }}"
+    copy_local_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa') }}"
 
   tasks:
     - name: Make sure we have a 'wheel' group
