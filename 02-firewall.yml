@@ -1,0 +1,22 @@
+---
+- hosts: all
+  remote_user: cbarrett
+  become: true
+  gather_facts: no
+
+  tasks:
+    - name: UFW - Allow SSH connections
+      ufw:
+        rule: allow
+        name: OpenSSH
+
+    - name: UFW - Deny all other incoming traffic by default
+      ufw:
+        state: enabled
+        policy: deny
+        direction: incoming
+
+    - name: Install fail2ban
+      apt:
+        name: fail2ban
+        update_cache: yes
