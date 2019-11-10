@@ -1,18 +1,19 @@
 # cbhost-ansible
 
-An Ansible playbook collection for a multi-purpose personal server.
+Ansible playbooks for a multi-purpose personal server.
 
 This node will host the following containers behind a NGINX reverse proxy:
- - 3x WordPress (w/NGINX, Redis, & MariaDB)
- - 1x React (w/NGINX)
- - 1x ASP.NET Core API (w/MariaDB)
- - 1x .NET Core console app
- - 1x Discourse
- - 1x Bitwarden
+ - 3x [WordPress](https://github.com/collinbarrett/wp-host-on-containers) (w/NGINX, Redis, & MariaDB)
+ - [FilterLists](https://github.com/collinbarrett/FilterLists)
+    - 1x React (w/NGINX)
+    - 1x ASP.NET Core API (w/MariaDB)
+    - 1x .NET Core console app
+    - 1x [Discourse](https://hub.filterlists.com/)
+ - 1x [Bitwarden](https://help.bitwarden.com/article/install-on-premise/)
 
-## Host Setup
+## Managed Node Setup
 
-I use a single minimal DigitalOcean droplet as a host. It's a $10/mo instance since Bitwarden's SQL Server dependency requires 2GB ram. I have a public SSH key stored with DigitalOcean that I add to the droplet when creating it. I enable droplet backups.
+I use a single minimal [DigitalOcean](https://m.do.co/c/fea63c0a77d1) Ubuntu LTS droplet as a host. It's a $10/mo instance since Bitwarden's SQL Server dependency requires 2GB ram. I have a public SSH key stored with DigitalOcean that I add to the droplet when creating it. I enable droplet backups.
 
 ## Control Node Setup
 
@@ -46,7 +47,7 @@ Since I have 2FA enabled on GitHub, I created a personal access token and config
 
 Install the `Remote - WSL` extension inside of Visual Studio Code on the Windows host to edit the git repo.
 
-### Ansible Hosts Inventory
+### Inventory
 
 Add the IP of the host droplet to `/etc/ansible/hosts` inside WSL.
 
