@@ -1,4 +1,4 @@
-# cbhost
+# cbhost-ansible
 
 An Ansible playbook collection for a multi-purpose personal server.
 
@@ -10,11 +10,11 @@ This node will host the following containers behind a NGINX reverse proxy:
  - 1x Discourse
  - 1x Bitwarden
 
-# Host Setup
+## Host Setup
 
 I use a single minimal DigitalOcean droplet as a host. It's a $10/mo instance since Bitwarden's SQL Server dependency requires 2GB ram. I have a public SSH key stored with DigitalOcean that I add to the droplet when creating it. I enable droplet backups.
 
-# Control Node Setup
+## Control Node Setup
 
 As primarily a .NET developer, I use a Windows development environment.
 
@@ -22,11 +22,11 @@ As primarily a .NET developer, I use a Windows development environment.
 
 So, to get up and running, I am using WSL.
 
-## Enable and Install WSL
+### Enable and Install WSL
 
 Follow [official docs](https://docs.microsoft.com/en-us/windows/wsl/install-win10) for getting WSL up and running. I am using the latest Ubuntu LTS image.
 
-## SSH Keys
+### SSH Keys
 
 Copy over `.pem` and `.pub` SSH keys (of the same name) into WSL `~/.ssh` directory.
 
@@ -34,23 +34,23 @@ I am using `keychain` to automatically launch `ssh-agent` and `ssh-add` my key e
 
 https://stackoverflow.com/a/24902046/2343739
 
-## git clone
+### git clone
 
 Clone this `cbhost-ansible` repo into a directory inside of the WSL instance.
 
-## Authenticate with GitHub
+### Authenticate with GitHub
 
 Since I have 2FA enabled on GitHub, I created a personal access token and configured `credential.helper` to store via git in WSL. The first time I try to `git push`, I provide username and PAT. It is then stored for me for future pushes.
 
-## VS Code WSL Remote
+### VS Code WSL Remote
 
 Install the `Remote - WSL` extension inside of Visual Studio Code on the Windows host to edit the git repo.
 
-## Ansible Hosts Inventory
+### Ansible Hosts Inventory
 
 Add the IP of the host droplet to `/etc/ansible/hosts` inside WSL.
 
-# Commands
+## Commands
 
  - `ansible all -m ping -u root`
  - `ansible all -m ping`
