@@ -1,4 +1,4 @@
 ---
-- import_playbook: 01-user-account.yml
+- import_playbook: 01-user-account.yml #only run first time as it disables remote_user: root
 - import_playbook: 02-firewall.yml
 - import_playbook: 03-updates.yml
