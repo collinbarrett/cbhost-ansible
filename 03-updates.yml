@@ -2,7 +2,6 @@
 - hosts: all
   remote_user: cbarrett
   become: true
-  gather_facts: no
 
   tasks:
     - name: Update the Package Index

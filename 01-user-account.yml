@@ -1,7 +1,6 @@
 ---
 - hosts: all
   remote_user: root
-  gather_facts: no
   vars:
     create_user: cbarrett
     copy_local_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/cbhostadmin.pub') }}"
