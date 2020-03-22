@@ -15,9 +15,9 @@
       lineinfile:
         path: /etc/sudoers
         state: present
-        regexp: '^%wheel'
-        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
-        validate: '/usr/sbin/visudo -cf %s'
+        regexp: "^%wheel"
+        line: "%wheel ALL=(ALL) NOPASSWD: ALL"
+        validate: "/usr/sbin/visudo -cf %s"
 
     - name: Create a new regular user with sudo privileges
       user:
@@ -38,8 +38,8 @@
       lineinfile:
         path: /etc/ssh/sshd_config
         state: present
-        regexp: '^#?PermitRootLogin'
-        line: 'PermitRootLogin no'
+        regexp: "^#?PermitRootLogin"
+        line: "PermitRootLogin no"
 
     - name: Restart ssh
       service:
