@@ -24,21 +24,15 @@ via [Ansible Docs](https://docs.ansible.com/ansible/latest/installation_guide/in
 
 ### SSH Keys
 
-- `cp /path/to/key.pem ~/.ssh/key.pem`
-- `cp /path/to/key.pub ~/.ssh/key.pub`
-- `chmod 400 ~/.ssh/key.pem`
-- `chmod 400 ~/.ssh/key.pub`
-- Add to `~/.zshrc`: `keychain --eval ~/.ssh/key.pem`
-
-via [StackOverflow](https://stackoverflow.com/a/24902046/2343739)
+- `cp /path/to/id_rsa.pub ~/.ssh/id_rsa.pub`
+- `cp /path/to/id_rsa ~/.ssh/id_rsa`
+- `chmod 700 ~/.ssh`
+- `chmod 644 ~/.ssh/id_rsa.pub`
+- `chmod 600 ~/.ssh/id_rsa`
 
 ### git clone
 
 Clone this `cbhost-ansible` repo into a directory inside of the WSL instance.
-
-### Authenticate with GitHub
-
-With 2FA enabled on GitHub, create a personal access token (PAT) and configure `credential.helper` to store it via git in WSL. The first `git push` requires providing a username and PAT. The credentials are then stored for future pushes.
 
 ### Inventory
 
